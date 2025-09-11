@@ -1,0 +1,27 @@
+{
+    "classes": [
+        "view-page-title",
+        "footer",
+        "table-container",
+        "table",
+        "table-header",
+        "table-cell-header",
+        "table-row",
+        "paginator",
+        "add-book-btn-container",
+        "add-book-btn-isbn-container",
+        "view-home-btn",
+        "form-container",
+        "add-book-btn",
+        "home-page-btn",
+        "clear-btn",
+        "clear-filter-btn",
+        "audit-view-btn",
+        "save-book-container",
+        "isbn-input-box",
+        "input-box",
+        "audit-page-top-container",
+        "modal-backdrop",
+        "modal-content"
+    ]
+}

@@ -1,0 +1,585 @@
+[
+    {
+        "id": "sd_9PTNXsPJNJlzNGtS",
+        "type": "tab",
+        "createdDate": "2025-09-09T16:06:17.522Z",
+        "label": "view_audits",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "view_auditsComponent"
+    },
+    {
+        "id": "sd_dhAEgvJh8pT3qcRI",
+        "type": "OnInit",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "inputVariables": [],
+        "localVariables": [],
+        "outputVariables": [],
+        "pageVariables": [],
+        "functionName": "sd_dhAEgvJh8pT3qcRI",
+        "category": "Lifecycle Events",
+        "x": 74.00000190734863,
+        "y": 142.0000057220459,
+        "wires": [
+            [
+                "sd_NYTz8KmB6gopr9PS"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_auditsComponent"
+    },
+    {
+        "id": "sd_ptBpr4zohQSa9UI1",
+        "type": "ViewPicker",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "childViewVariables": [
+            {
+                "key": {
+                    "type": "literal",
+                    "value": "MatSort"
+                },
+                "defaultValue": "",
+                "isViewChildren": false
+            },
+            {
+                "key": {
+                    "type": "literal",
+                    "value": "MatPaginator"
+                },
+                "defaultValue": "",
+                "isViewChildren": false
+            }
+        ],
+        "functionName": "sd_ptBpr4zohQSa9UI1",
+        "category": "Function",
+        "x": 803.0000114440918,
+        "y": 213.81250762939453,
+        "wires": [
+            [
+                "sd_DU2wUoAqr4kmX84L"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_DU2wUoAqr4kmX84L",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "this.page.tableData.sort = this.MatSort;\nthis.page.tableData.paginator = this.MatPaginator;\n\n\npage.operations = [\n   {value: 'READ_BOOK', viewValue: 'BOOK READ'},\n   {value: 'CREATE_BOOK', viewValue: 'BOOK CREATE'},\n   {value: 'UPDATE_BOOK', viewValue: 'BOOK UPDATE'},\n   {value: 'DELETE_BOOK', viewValue: 'BOOK DELETE'},\n   {value: 'GENERATE_PDF', viewValue: 'PDF GENERATE'},\n   {value: 'LOGIN', viewValue: 'USER LOGIN'},\n   {value: 'LOGOUT', viewValue: 'USER LOGOUT'},\n ];\n\n\nconsole.log('page startDate', page.startDate)\nconsole.log('page endDate', page.endDate)\n\n",
+        "functionName": "sd_DU2wUoAqr4kmX84L",
+        "category": "Function",
+        "x": 910.0000133514404,
+        "y": 214.81250762939453,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_NYTz8KmB6gopr9PS",
+        "type": "HttpRequest",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMapping": "",
+        "methodMappingObj": {},
+        "urlMapping": "\"http://localhost:8081/api/audits\"",
+        "urlMappingObj": {
+            "mapVarType": "str",
+            "mapVarValue": "http://localhost:8081/api/audits"
+        },
+        "ret": "json",
+        "retMapping": "",
+        "retMappingObj": {},
+        "observe": "",
+        "observeMapping": "",
+        "observeMappingObj": {},
+        "reportProgress": false,
+        "withCreds": false,
+        "reqBody": "",
+        "reqBodyObj": {
+            "mapVarType": "this.page",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMapping": "",
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMapping": "",
+        "paramMappingObj": {},
+        "functionName": "sd_NYTz8KmB6gopr9PS",
+        "category": "HTTP",
+        "x": 235.00000190734863,
+        "y": 140.8125057220459,
+        "wires": [
+            [
+                "sd_8cAnef9EeqQ1ek0l"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_nyFHutfFPAHydtUy",
+        "type": "PageStart",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "pagination",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "pagination",
+        "category": "General",
+        "x": 128.00000381469727,
+        "y": 300.81249237060547,
+        "wires": [
+            [
+                "sd_mALOTDlr5ZG7STc5"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_auditsComponent"
+    },
+    {
+        "id": "sd_mALOTDlr5ZG7STc5",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "pagination_logic",
+        "script": "const pageIndex = page.tableData.paginator.pageIndex;\nconst pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = pageIndex + 1;\nbh.local.limit = pageSize;\n\n",
+        "functionName": "paginationLogic",
+        "category": "Function",
+        "x": 230.72726821899414,
+        "y": 300.81250762939453,
+        "wires": [
+            [
+                "sd_hZYSmCtT4jBWQR9A"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_8cAnef9EeqQ1ek0l",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.dataSource=new MatTableDataSource(bh.local.response.auditLogsData)\n\n\n page.selected=[];\n page.startDate=null;\n page.endDate=new Date();",
+        "functionName": "sd_8cAnef9EeqQ1ek0l",
+        "category": "Function",
+        "x": 401.00000190734863,
+        "y": 139.8125057220459,
+        "wires": [
+            [
+                "sd_OSrPXNNXyK9n2sOF"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_OSrPXNNXyK9n2sOF",
+        "type": "PageVariables",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [
+            {
+                "textIp": "tableData",
+                "typedIpValue": {
+                    "type": "bh.local",
+                    "value": "dataSource"
+                }
+            },
+            {
+                "textIp": "totalDocuments",
+                "typedIpValue": {
+                    "type": "bh.local",
+                    "value": "response.totalDocuments"
+                }
+            },
+            {
+                "textIp": "limit",
+                "typedIpValue": {
+                    "type": "bh.local",
+                    "value": "response.limit"
+                }
+            }
+        ],
+        "functionName": "sd_OSrPXNNXyK9n2sOF",
+        "category": "Function",
+        "x": 703.0000114440918,
+        "y": 213.81250762939453,
+        "wires": [
+            [
+                "sd_ptBpr4zohQSa9UI1"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_Hu1LH4yLTDQZbp76",
+        "type": "HttpRequest",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMapping": "",
+        "methodMappingObj": {},
+        "urlMapping": "\"http://localhost:8081/api/audits\"",
+        "urlMappingObj": {
+            "mapVarType": "str",
+            "mapVarValue": "http://localhost:8081/api/audits"
+        },
+        "ret": "json",
+        "retMapping": "",
+        "retMappingObj": {},
+        "observe": "",
+        "observeMapping": "",
+        "observeMappingObj": {},
+        "reportProgress": false,
+        "withCreds": false,
+        "reqBody": "",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMapping": "",
+        "headerMappingObj": {},
+        "params": [],
+        "paramsObj": {},
+        "paramMapping": "bh.local.query",
+        "paramMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "query"
+        },
+        "functionName": "sd_Hu1LH4yLTDQZbp76",
+        "category": "HTTP",
+        "x": 457.0000057220459,
+        "y": 300.81249237060547,
+        "wires": [
+            [
+                "sd_031pqSMYINsGeSoM"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_031pqSMYINsGeSoM",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.dataSource=bh.local.response.auditLogsData",
+        "functionName": "sd_031pqSMYINsGeSoM",
+        "category": "Function",
+        "x": 544.0000076293945,
+        "y": 298.81249237060547,
+        "wires": [
+            [
+                "sd_OSrPXNNXyK9n2sOF"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_5ZQrftzxC92QQuiG",
+        "type": "PageStart",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "filtered",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "filtered",
+        "category": "General",
+        "x": 110.00000095367432,
+        "y": 473.79999351501465,
+        "wires": [
+            [
+                "sd_3jexMU6Dmg1f4Nq9"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_auditsComponent"
+    },
+    {
+        "id": "sd_3jexMU6Dmg1f4Nq9",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "filter_pagination",
+        "script": "const pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = 1;\nbh.local.limit = pageSize;\n\n\npage.filter={\n    operations:page.selected,\n    startDate:page.startDate,\n    endDate:page.endDate\n}",
+        "functionName": "filterPagination",
+        "category": "Function",
+        "x": 215.00000381469727,
+        "y": 430.79999351501465,
+        "wires": [
+            [
+                "sd_hZYSmCtT4jBWQR9A"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_hZYSmCtT4jBWQR9A",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "create query params",
+        "script": "console.log('bh.local.currentPage ==',bh.local.currentPage)\nconsole.log('bh.local.limit ==',bh.local.limit)\n\nbh.local.query={\n    ...page.filter,\n    page:bh.local.currentPage,\n    limit:bh.local.limit\n}\n\n\nconsole.log('pagination query === ',bh.local.query)",
+        "functionName": "createQueryParams",
+        "category": "Function",
+        "x": 348.0250301361084,
+        "y": 301.82496643066406,
+        "wires": [
+            [
+                "sd_Hu1LH4yLTDQZbp76"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_nK23oTd7xIVKW5qN",
+        "type": "PageStart",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "clear filter",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "clearFilter",
+        "category": "General",
+        "x": 254.02502918243408,
+        "y": 548.8124961853027,
+        "wires": [
+            [
+                "sd_3no30brsAE7lDQeR"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_auditsComponent"
+    },
+    {
+        "id": "sd_3no30brsAE7lDQeR",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "clear filter logic",
+        "script": "const pageIndex = page.tableData.paginator.pageIndex;\nconst pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = 1;\nbh.local.limit = pageSize;\n\npage.filter = {}\npage.selected = [];\npage.startDate = null;\npage.endDate = new Date();",
+        "functionName": "clearFilterLogic",
+        "category": "Function",
+        "x": 344.00000381469727,
+        "y": 446.79999351501465,
+        "wires": [
+            [
+                "sd_hZYSmCtT4jBWQR9A"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_IKPpmZDdhEeIE2WP",
+        "type": "PageStart",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "pdf_generate",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "pdfGenerate",
+        "category": "General",
+        "x": 587.5312805175781,
+        "y": 478.51563453674316,
+        "wires": [
+            [
+                "sd_8Hd79VZ4YrbXYAez"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_auditsComponent"
+    },
+    {
+        "id": "sd_8Hd79VZ4YrbXYAez",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.pdfGenerateURL='http://localhost:8081/api/audits/report/pdf'\n\nbh.local.query={\n    operations:page.selected,\n    startDate:page.startDate,\n    endDate:page.endDate\n}\n\nconsole.log('query params ---',bh.local.query)",
+        "functionName": "sd_8Hd79VZ4YrbXYAez",
+        "category": "Function",
+        "x": 727.5312690734863,
+        "y": 478.5313148498535,
+        "wires": [
+            [
+                "sd_2zJoV5mBZEVDTqtK"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_2zJoV5mBZEVDTqtK",
+        "type": "HttpRequest",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.pdfGenerateURL",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "pdfGenerateURL"
+        },
+        "ret": "blob",
+        "retMappingObj": {},
+        "observe": "",
+        "observeMappingObj": {},
+        "reportProgress": false,
+        "withCreds": false,
+        "reqBodyObj": {
+            "mapVarType": "bh",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.blob",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "blob"
+        },
+        "headers": {
+            "Accept": "application/pdf"
+        },
+        "headersObj": [
+            {
+                "key": "Accept",
+                "defaultValue": "application/pdf"
+            }
+        ],
+        "headerMappingObj": {},
+        "paramMapping": "bh.local.query",
+        "paramMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "query"
+        },
+        "functionName": "sd_2zJoV5mBZEVDTqtK",
+        "category": "HTTP",
+        "x": 880,
+        "y": 479.85936164855957,
+        "wires": [
+            [
+                "sd_rZq58zaQesGyeqdF"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_rZq58zaQesGyeqdF",
+        "type": "Script",
+        "z": "sd_9PTNXsPJNJlzNGtS",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log('res from pdf generate === ', bh.local.blob)\n\nlet blob = bh.local.blob\nconst url = window.URL.createObjectURL(blob);\nconst a = document.createElement('a');\na.href = url;\na.download = 'audit-report.pdf';\na.click();\n\nwindow.URL.revokeObjectURL(url);",
+        "functionName": "sd_rZq58zaQesGyeqdF",
+        "category": "Function",
+        "x": 1003.7500295639038,
+        "y": 478.50001335144043,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_auditsComponent",
+        "generated": true
+    }
+]

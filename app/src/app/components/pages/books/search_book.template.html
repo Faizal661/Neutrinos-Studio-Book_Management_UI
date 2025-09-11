@@ -1,0 +1,22 @@
+<bh-library_header></bh-library_header>
+<div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" style="margin-top:15px;" class="add-book-btn-isbn-container" fxLayoutAlign="start stretch" [fxShow]="true">
+    <mat-form-field class="isbn-input-box" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+      <input matInput [(ngModel)]="page.pageData.isbn" name="isbn" placeholder="ISBN" value="9780061120084" [required]="true">
+      <mat-label>Enter ISBN </mat-label>
+    </mat-form-field><button mat-raised-button class="add-book-btn" (click)="fetchIsbnBook()" type="button">search book</button>
+  </div>
+  <div fxLayout="column wrap" class="table-container" fxLayoutAlign="start stretch" *ngIf="page.hideButton">
+    <h4 style="padding:10px 50px;">
+      ID : {{page.bookData.id}}</h4>
+    <h4 style="padding:10px 50px;">
+      ISBN: {{page.bookData.isbn}}</h4>
+    <h4 style="padding:10px 50px;">
+      title : {{page.bookData.title}}</h4>
+    <h4 style="padding:10px 50px;">
+      publishers : {{page.bookData.publishers}}</h4>
+    <h4 style="padding:10px 50px;">
+      published year : {{page.bookData.publishedYear}}</h4>
+    <div fxLayout="row wrap" class="save-book-container" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button class="add-book-btn" (click)="createBookUsingIsbn()">save book </button><button mat-button class="clear-btn" (click)="clearBookDataViewCard()">Clear</button></div>
+  </div>
+</div><bh-library_footer></bh-library_footer>

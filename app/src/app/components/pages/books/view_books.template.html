@@ -1,0 +1,46 @@
+<bh-library_header></bh-library_header>
+<div fxLayout="column wrap" class="page-body" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" class="add-book-btn-container" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button style="margin-left:10px;" routerLink="../search-book" class="home-page-btn">Find books</button></div>
+  <div fxLayout="column" class="table table-container">
+    <table mat-table [dataSource]="page?.tableData" matSort class="table-width-fix">
+      <tr mat-header-row *matHeaderRowDef="[&apos;isbn&apos;,&apos;title&apos;,&apos;publishers&apos;,&apos;publishedYear&apos;,&apos;a45d904d-6ba0-c077-a188-dd3827037dc8&apos;]"></tr>
+      <tr mat-row (click)="storeCurrentBookData(row)" *matRowDef="let row; columns: [&apos;isbn&apos;,&apos;title&apos;,&apos;publishers&apos;,&apos;publishedYear&apos;,&apos;a45d904d-6ba0-c077-a188-dd3827037dc8&apos;];"></tr>
+
+      <ng-container matColumnDef="isbn">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">ISBN</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.isbn}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef class="table-header">Title</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.title}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="publishers">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Author</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.publishers}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="publishedYear">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Published Year</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.publishedYear}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="a45d904d-6ba0-c077-a188-dd3827037dc8">
+        <th mat-header-cell *matHeaderCellDef class="table-header">Actions</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row"><button mat-raised-button style="margin-right:15px;" class="view-home-btn" (click)="updateBook()">Edit</button><button mat-raised-button style="heigth:10px;" class="clear-btn" (click)="deleteBook()">delete</button></td>
+      </ng-container>
+    </table>
+    <mat-paginator [length]="page?.totalDocuments" class="paginator" [pageSize]="page?.limit" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pagination(page.pagIndex,page.limit)">
+    </mat-paginator>
+
+  </div>
+</div>
+<div fxLayout="row wrap" class="modal-backdrop" fxLayoutAlign="start stretch" [fxShow]="true" *ngIf="page.showCofirmModal">
+  <div fxLayout="column wrap" class="modal-content" fxLayoutAlign="start stretch" [fxShow]="true">
+    <h3 style="color:{{page.color}};">
+      {{page.confirmMessage}}
+    </h3>
+    <div fxLayout="row wrap" style="margin-top:15px;" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button style="background-color:{{page.color}};" class="view-home-btn" (click)="choseUpdateOrDeleteConfirm()">Ok</button><button mat-raised-button style="margin-left:15px;" (click)="clearConfirmModalData()">Cancel</button></div>
+  </div>
+</div>

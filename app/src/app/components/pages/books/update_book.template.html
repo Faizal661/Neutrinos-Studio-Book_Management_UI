@@ -1,0 +1,33 @@
+<div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true"><bh-library_header></bh-library_header>
+  <div fxLayout="column wrap" class="page-body" fxLayoutAlign="start stretch" [fxShow]="true">
+    <div fxLayout="column wrap" class="add-book-btn-container" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button routerLink="../home" class="view-home-btn">Home Page</button></div>
+    <div fxLayout="column wrap" class="form-container" fxLayoutAlign="start stretch" [fxShow]="true">
+      <h1>
+        Update Book Details </h1>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+        <mat-form-field class="input-box" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput [(ngModel)]="page.updatedData.isbn" placeholder="ISBN" [required]="true" readonly="true" [disabled]="true">
+          <mat-label>ID</mat-label>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+        <mat-form-field class="input-box" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput [(ngModel)]="page.updatedData.title" placeholder="Title" [required]="true">
+          <mat-label>Title</mat-label>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+        <mat-form-field class="input-box" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput [(ngModel)]="page.updatedData.publishers" placeholder="Publishers" [required]="false">
+          <mat-label>Publishers</mat-label>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+        <mat-form-field class="input-box" [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput [(ngModel)]="page.updatedData.publishedYear" placeholder="Published Year" [required]="false">
+
+        </mat-form-field>
+      </div><button mat-raised-button style="margin-top:10px;" class="add-book-btn" (click)="updateBook()" type="button">Update book </button>
+    </div>
+  </div>
+</div>

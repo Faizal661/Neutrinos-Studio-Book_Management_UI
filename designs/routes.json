@@ -1,0 +1,35 @@
+{
+    "routes": [
+        {
+            "path": "home",
+            "component": "view_booksComponent"
+        },
+        {
+            "path": "add-book",
+            "component": "add_bookComponent",
+            "pathMatch": ""
+        },
+        {
+            "path": "search-book",
+            "component": "search_bookComponent"
+        },
+        {
+            "path": "update-book",
+            "component": "update_bookComponent"
+        },
+        {
+            "path": "audits",
+            "component": "view_auditsComponent"
+        },
+        {
+            "path": "''",
+            "redirectTo": "home",
+            "pathMatch": "full",
+            "default": true
+        },
+        {
+            "path": "**",
+            "component": "PageNotFoundComponent"
+        }
+    ]
+}

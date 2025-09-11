@@ -1,0 +1,198 @@
+[
+    {
+        "id": "sd_bpdKwcY9yjh0XEqk",
+        "type": "tab",
+        "createdDate": "2025-09-05T13:09:14.618Z",
+        "label": "add_book",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "add_bookComponent"
+    },
+    {
+        "id": "sd_H2Z85r4d2cOUGkbl",
+        "type": "OnInit",
+        "z": "sd_bpdKwcY9yjh0XEqk",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_H2Z85r4d2cOUGkbl",
+        "category": "Lifecycle Events",
+        "x": 105,
+        "y": 60,
+        "wires": [
+            [
+                "sd_IVPZRZ8iMLweeWvp"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "add_bookComponent"
+    },
+    {
+        "id": "sd_IVPZRZ8iMLweeWvp",
+        "type": "PageVariables",
+        "z": "sd_bpdKwcY9yjh0XEqk",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_IVPZRZ8iMLweeWvp",
+        "category": "Function",
+        "x": 225,
+        "y": 60,
+        "wires": [
+            [
+                "sd_ZhcUYeZkG5PboJyt"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "add_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_NKwYpnHxCAtLv2zL",
+        "type": "PageStart",
+        "z": "sd_bpdKwcY9yjh0XEqk",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "add book details",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "form",
+                "defaultValue": {
+                    "type": "null",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "addBookDetails",
+        "category": "General",
+        "x": 125,
+        "y": 220,
+        "wires": [
+            [
+                "sd_6OEoJFHmiCuNKsGc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "add_bookComponent"
+    },
+    {
+        "id": "sd_6OEoJFHmiCuNKsGc",
+        "type": "PageVariables",
+        "z": "sd_bpdKwcY9yjh0XEqk",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "book details enter",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [
+            {
+                "textIp": "book_data",
+                "typedIpValue": {
+                    "type": "bh.input",
+                    "value": "form"
+                }
+            }
+        ],
+        "functionName": "bookDetailsEnter",
+        "category": "Function",
+        "x": 285,
+        "y": 220,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "add_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_ZhcUYeZkG5PboJyt",
+        "type": "UseDependency",
+        "z": "sd_bpdKwcY9yjh0XEqk",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "property": "",
+        "propertyType": "bh",
+        "propertyGv": "bh.",
+        "alias": "",
+        "modules": [
+            {
+                "textIp": "FormGroup",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "FormControl",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "Validators",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            }
+        ],
+        "import_all": false,
+        "library": "@angular/forms",
+        "serviceDesignerType": "pages",
+        "functionName": "sd_ZhcUYeZkG5PboJyt",
+        "category": "Function",
+        "x": 345,
+        "y": 60,
+        "wires": [
+            [
+                "sd_e02HaJzZnSaYxAQe"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "add_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_e02HaJzZnSaYxAQe",
+        "type": "Script",
+        "z": "sd_bpdKwcY9yjh0XEqk",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.form = new FormGroup({\n    id: new FormControl('',{validators:[Validators.required],updateOn:'blur'}),\n    isbn: new FormControl('',{validators:[Validators.required],updateOn:'blur'})\n})",
+        "functionName": "sd_e02HaJzZnSaYxAQe",
+        "category": "Function",
+        "x": 485,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "add_bookComponent",
+        "generated": true
+    }
+]

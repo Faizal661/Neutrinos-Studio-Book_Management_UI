@@ -1,0 +1,64 @@
+<bh-library_header></bh-library_header>
+<div fxLayout="column wrap" class="page-body" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" style="margin:0px 80px;gap: 50px;" class="audit-page-top-container" fxLayoutAlign="start stretch" [fxShow]="true">
+    <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+      <div fxLayout="row wrap" style="gap:20px;" fxLayoutAlign="start stretch" [fxShow]="true"><mat-form-field style="color:red;" [appearance]="&apos;outline&apos;" [floatLabel]="&apos;always&apos;">
+          <mat-label>Operation</mat-label>
+          <mat-select [(value)]="page.selected" placeholder="Operation" [required]="false" multiple [disabled]="false">
+            <mat-option [value]="&apos;READ_BOOK&apos;" disabled="false">BOOK READ</mat-option><mat-option [value]="&apos;CREATE_BOOK&apos;" disabled="false">BOOK CREATE</mat-option><mat-option [value]="&apos;UPDATE_BOOK&apos;" disabled="false">BOOK UPDATE</mat-option><mat-option [value]="&apos;DELETE_BOOK&apos;" disabled="false">BOOK DELETE</mat-option><mat-option [value]="&apos;GENERATE_PDF&apos;" disabled="false">PDF GENERATE</mat-option><mat-option [value]="&apos;LOGIN&apos;" disabled="false">USER LOGIN</mat-option><mat-option [value]="&apos;LOGOUT&apos;" disabled="false">USER LOGOUT</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        <mat-form-field [appearance]="&apos;outline&apos;">
+          <mat-label>Start Date</mat-label>
+          <input matInput placeholder="Start Date" [matDatepicker]="startDate" [(ngModel)]="page.startDate" [required]="false" [disabled]="false">
+          <mat-datepicker-toggle matSuffix [for]="startDate" disabled="false"></mat-datepicker-toggle>
+          <mat-datepicker #startDate color="primary" id="startDate" [disabled]="false" startView="year" touchUi="false"></mat-datepicker>
+
+        </mat-form-field>
+        <mat-form-field [appearance]="&apos;outline&apos;">
+          <mat-label>End Date</mat-label>
+          <input matInput placeholder="End Date" [matDatepicker]="endDate" [(ngModel)]="page.endDate" [required]="false" [disabled]="false">
+          <mat-datepicker-toggle matSuffix [for]="endDate" disabled="false"></mat-datepicker-toggle>
+          <mat-datepicker #endDate color="primary" id="endDate" [disabled]="false" startView="year" touchUi="false"></mat-datepicker>
+
+        </mat-form-field><button mat-raised-button style="margin-top:7px;" class="audit-view-btn" (click)="filtered()">Filter</button><button mat-raised-button style="margin-left:4px;margin-top:7px;" class="clear-filter-btn" (click)="clearFilter()">clear</button>
+      </div>
+    </div>
+    <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button style="margin-left:10px;margin-top:7px;" class="add-book-btn" (click)="pdfGenerate()">Download PDF</button></div>
+  </div>
+  <div fxLayout="column" class="table table-container">
+    <table mat-table [dataSource]="page?.tableData" matSort class="table-width-fix">
+      <tr mat-header-row *matHeaderRowDef="[&apos;_id&apos;,&apos;operation&apos;,&apos;timestamp&apos;,&apos;resourceId&apos;,&apos;userId&apos;]"></tr>
+      <tr mat-row *matRowDef="let row; columns: [&apos;_id&apos;,&apos;operation&apos;,&apos;timestamp&apos;,&apos;resourceId&apos;,&apos;userId&apos;];"></tr>
+
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">ID</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table._id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="operation">
+        <th mat-header-cell *matHeaderCellDef class="table-header">Operation</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.operation}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Time stamp</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.timestamp}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="resourceId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Resource Id</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.resourceId}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">User Id</th>
+        <td mat-cell *matCellDef="let table; let i = index;" class="table-row">{{table.userId}}</td>
+      </ng-container>
+    </table>
+    <mat-paginator [length]="page?.totalDocuments" class="paginator" [pageSize]="page?.limit" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pagination()">
+    </mat-paginator>
+
+  </div>
+</div>

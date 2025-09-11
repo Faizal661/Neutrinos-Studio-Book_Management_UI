@@ -1,0 +1,90 @@
+[
+    {
+        "id": "sd_HfISRxZpqCpcLM4i",
+        "type": "tab",
+        "createdDate": "2025-09-05T15:05:59.420Z",
+        "label": "library_header",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "library_headerComponent"
+    },
+    {
+        "id": "sd_45nNi0RUuUibfU3q",
+        "type": "OnInit",
+        "z": "sd_HfISRxZpqCpcLM4i",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_45nNi0RUuUibfU3q",
+        "category": "Lifecycle Events",
+        "x": 106.0250244140625,
+        "y": 105.8375015258789,
+        "wires": [
+            [
+                "sd_VeDnbigzaio2685K"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "library_headerComponent"
+    },
+    {
+        "id": "sd_VeDnbigzaio2685K",
+        "type": "NavigationData",
+        "z": "sd_HfISRxZpqCpcLM4i",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "operationType": "url",
+        "operation": "keys",
+        "key": "bh",
+        "resultMapping": "bh.local.url",
+        "functionName": "sd_VeDnbigzaio2685K",
+        "category": "Navigation",
+        "x": 235.00000381469727,
+        "y": 111.80000686645508,
+        "wires": [
+            [
+                "sd_auV2cHAvjGejYQCg"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "key": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "url",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "library_headerComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_auV2cHAvjGejYQCg",
+        "type": "Script",
+        "z": "sd_HfISRxZpqCpcLM4i",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.currentPath=bh.local.url[0].path\n\n// console.log('curent page url ',bh.local.url)\n// console.log('curent path ',page.currentPath)",
+        "functionName": "sd_auV2cHAvjGejYQCg",
+        "category": "Function",
+        "x": 364,
+        "y": 102.82500457763672,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "library_headerComponent",
+        "generated": true
+    }
+]

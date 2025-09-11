@@ -1,0 +1,886 @@
+[
+    {
+        "id": "sd_nxSaw4R4bANqEjTD",
+        "type": "tab",
+        "createdDate": "2025-09-04T11:01:57.769Z",
+        "label": "view_books",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 2,
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_nW3Y2vV7L7BfwkcG",
+        "type": "OnInit",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "inputVariables": [],
+        "localVariables": [],
+        "outputVariables": [],
+        "pageVariables": [],
+        "functionName": "sd_nW3Y2vV7L7BfwkcG",
+        "category": "Lifecycle Events",
+        "x": 94,
+        "y": 105,
+        "wires": [
+            [
+                "sd_jVjF1naRsamkex1g"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_vrSxxc3QVVMZnw4w",
+        "type": "ViewPicker",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "childViewVariables": [
+            {
+                "key": {
+                    "type": "literal",
+                    "value": "MatSort"
+                },
+                "defaultValue": "",
+                "isViewChildren": false
+            },
+            {
+                "key": {
+                    "type": "literal",
+                    "value": "MatPaginator"
+                },
+                "defaultValue": "",
+                "isViewChildren": false
+            }
+        ],
+        "functionName": "sd_vrSxxc3QVVMZnw4w",
+        "category": "Function",
+        "x": 746.0000095367432,
+        "y": 178.0000171661377,
+        "wires": [
+            [
+                "sd_2pArTMdimYjEZrJc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_2pArTMdimYjEZrJc",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "initializing page variables",
+        "script": "this.page.tableData.sort = this.MatSort;\nthis.page.tableData.paginator = this.MatPaginator;\n\n\npage.currentRowBookData = {}\n\npage.showCofirmModal=false\npage.confirmMessage=''\npage.confirmType=''\npage.color='white'\n",
+        "functionName": "initializingPageVariables",
+        "category": "Function",
+        "x": 868.0000238418579,
+        "y": 179.00001907348633,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_5lsYndDRzYStfjK8",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "table dummy data",
+        "script": "page.dummyBookData=[{\n    \"id\":1,\n    \"author\":\"Faizal\",\n    \"isbn\":\"ISBN001\",\n    \"title\":\"first title of the book\",\n    \"publishedYear\":2005\n},\n{\n    \"id\":2,\n    \"author\":\"Faizal\",\n    \"isbn\":\"ISBN002\",\n    \"title\":\"second title of the book\",\n    \"publishedYear\":2018\n}]",
+        "functionName": "tableDummyData",
+        "category": "Function",
+        "x": 1152.0000190734863,
+        "y": 38.00000190734863,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_jVjF1naRsamkex1g",
+        "type": "HttpRequest",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMapping": "",
+        "methodMappingObj": {},
+        "urlMapping": "\"http://localhost:8081/api/books\"",
+        "urlMappingObj": {
+            "mapVarType": "str",
+            "mapVarValue": "http://localhost:8081/api/books"
+        },
+        "ret": "json",
+        "retMapping": "",
+        "retMappingObj": {},
+        "observe": "",
+        "observeMapping": "",
+        "observeMappingObj": {},
+        "reportProgress": false,
+        "withCreds": false,
+        "reqBody": "",
+        "reqBodyObj": {
+            "mapVarType": "this.page",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMapping": "",
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMapping": "",
+        "paramMappingObj": {},
+        "functionName": "sd_jVjF1naRsamkex1g",
+        "category": "HTTP",
+        "x": 223,
+        "y": 104,
+        "wires": [
+            [
+                "sd_Nj4CNr8uVDkcsVRR"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_E8nn7TgZ5LR57bi7",
+        "type": "PageStart",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "pagination",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "pagination",
+        "category": "General",
+        "x": 90.00000667572021,
+        "y": 242.0000057220459,
+        "wires": [
+            [
+                "sd_Qd9uuVIXtpXfD7Sz"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_Qd9uuVIXtpXfD7Sz",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const pageIndex = page.tableData.paginator.pageIndex;\nconst pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = pageIndex + 1;\nbh.local.limit = pageSize;\n\n\nbh.local.query={\n    page:bh.local.currentPage,\n    limit:bh.local.limit\n}\n",
+        "functionName": "sd_Qd9uuVIXtpXfD7Sz",
+        "category": "Function",
+        "x": 190.00000667572021,
+        "y": 242.0000057220459,
+        "wires": [
+            [
+                "sd_XfZcqxZ3flb9cSvn"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_Nj4CNr8uVDkcsVRR",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.dataSource=new MatTableDataSource(bh.local.response.bookData)",
+        "functionName": "sd_Nj4CNr8uVDkcsVRR",
+        "category": "Function",
+        "x": 405,
+        "y": 100,
+        "wires": [
+            [
+                "sd_4CCbcU6kvOvu5YbK"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_4CCbcU6kvOvu5YbK",
+        "type": "PageVariables",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [
+            {
+                "textIp": "tableData",
+                "typedIpValue": {
+                    "type": "bh.local",
+                    "value": "dataSource"
+                }
+            },
+            {
+                "textIp": "totalDocuments",
+                "typedIpValue": {
+                    "type": "bh.local",
+                    "value": "response.totalDocuments"
+                }
+            },
+            {
+                "textIp": "limit",
+                "typedIpValue": {
+                    "type": "bh.local",
+                    "value": "response.limit"
+                }
+            }
+        ],
+        "functionName": "sd_4CCbcU6kvOvu5YbK",
+        "category": "Function",
+        "x": 646.0000095367432,
+        "y": 178.0000171661377,
+        "wires": [
+            [
+                "sd_vrSxxc3QVVMZnw4w"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_XfZcqxZ3flb9cSvn",
+        "type": "HttpRequest",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMappingObj": {},
+        "urlMapping": "\"http://localhost:8081/api/books\"",
+        "urlMappingObj": {
+            "mapVarType": "str",
+            "mapVarValue": "http://localhost:8081/api/books"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "observe": "",
+        "observeMappingObj": {},
+        "reportProgress": false,
+        "withCreds": false,
+        "reqBodyObj": {
+            "mapVarType": "this.page",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "paramMapping": "bh.local.query",
+        "paramMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "query"
+        },
+        "functionName": "sd_XfZcqxZ3flb9cSvn",
+        "category": "HTTP",
+        "x": 330.0000066757202,
+        "y": 242.0000057220459,
+        "wires": [
+            [
+                "sd_RbQtdAHqHAYmnuhn"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_RbQtdAHqHAYmnuhn",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.dataSource=bh.local.response.bookData",
+        "functionName": "sd_RbQtdAHqHAYmnuhn",
+        "category": "Function",
+        "x": 450.0000066757202,
+        "y": 242.0000057220459,
+        "wires": [
+            [
+                "sd_4CCbcU6kvOvu5YbK"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_B2fJ0ru377aPLiPu",
+        "type": "PageStart",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "deleteBook",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "deleteBook",
+        "category": "General",
+        "x": 305,
+        "y": 660,
+        "wires": [
+            [
+                "sd_bWuW2DbupOYffPXT"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_bWuW2DbupOYffPXT",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\npage.confirmMessage=\"Do you really want to delete this book?\"\npage.showCofirmModal=true\npage.color='red'\npage.confirmType='delete'\n",
+        "functionName": "sd_bWuW2DbupOYffPXT",
+        "category": "Function",
+        "x": 430,
+        "y": 660,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_2BlTsZGFSbV1s8lb",
+        "type": "PageStart",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "StoreCurrentBookData",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "row",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "storeCurrentBookData",
+        "category": "General",
+        "x": 125,
+        "y": 820,
+        "wires": [
+            [
+                "sd_JQVQC2QLPTcLE4wZ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_JQVQC2QLPTcLE4wZ",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log('isbn from handling currentISBN === ',bh.input)\n\npage.currentRowBookData=bh.input.row",
+        "functionName": "sd_JQVQC2QLPTcLE4wZ",
+        "category": "Function",
+        "x": 250,
+        "y": 820,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_sKKkI8dkJdsds12X",
+        "type": "PageStart",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "clearConfirmModalData",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "clearConfirmModalData",
+        "category": "General",
+        "x": 125,
+        "y": 960,
+        "wires": [
+            [
+                "sd_YarMHs8ZhnGWygOn"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_YarMHs8ZhnGWygOn",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.confirmMessage=\"\"\npage.showCofirmModal=false\npage.color='white'\npage.confirmType=''",
+        "functionName": "sd_YarMHs8ZhnGWygOn",
+        "category": "Function",
+        "x": 265,
+        "y": 960,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_2NMkPlBF9psl7zD2",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log('currnet row data ',page.currentRowBookData)\n\nbh.local.deleteBookURL=`http://localhost:8081/api/books/${ page.currentRowBookData.isbn}`\n\npage.confirmMessage=\"\"\npage.showCofirmModal=false\npage.color='white'\npage.confirmType=''",
+        "functionName": "sd_2NMkPlBF9psl7zD2",
+        "category": "Function",
+        "x": 405.00001335144043,
+        "y": 493.99999237060547,
+        "wires": [
+            [
+                "sd_AEgORQNp2jZhBE5H"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_AEgORQNp2jZhBE5H",
+        "type": "HttpRequest",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "method": "delete",
+        "methodMapping": "",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.deleteBookURL",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "deleteBookURL"
+        },
+        "ret": "json",
+        "retMapping": "",
+        "retMappingObj": {},
+        "observe": "",
+        "observeMapping": "",
+        "observeMappingObj": {},
+        "reportProgress": false,
+        "withCreds": false,
+        "reqBody": "",
+        "reqBodyObj": {
+            "mapVarType": "this.page",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMapping": "",
+        "headerMappingObj": {},
+        "params": [],
+        "paramsObj": {},
+        "paramMapping": "bh.local.query",
+        "paramMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "query"
+        },
+        "functionName": "sd_AEgORQNp2jZhBE5H",
+        "category": "HTTP",
+        "x": 525.0000133514404,
+        "y": 493.99999237060547,
+        "wires": [
+            [
+                "sd_7Z6E7IUEiMykhMpl"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_Kdts51Vmryh8ReLS",
+        "type": "SnackBar",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "message": {
+            "type": "str",
+            "value": "Failed to delete book"
+        },
+        "action": {
+            "type": "str",
+            "value": "Ok"
+        },
+        "duration": {
+            "type": "num",
+            "value": "3000"
+        },
+        "horizontalPosition": "center",
+        "horizontalPositionMap": "",
+        "verticalPosition": "bottom",
+        "verticalPositionMap": "",
+        "panelClass": {
+            "type": "str",
+            "value": ""
+        },
+        "direction": "ltr",
+        "functionName": "sd_Kdts51Vmryh8ReLS",
+        "category": "General",
+        "x": 865.0000133514404,
+        "y": 513.9999923706055,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_7Z6E7IUEiMykhMpl",
+        "type": "PageSwitch",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "response.status",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.response.status",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "200",
+                "vt": "num",
+                "gv": "200"
+            },
+            {
+                "t": "gte",
+                "v": "400",
+                "vt": "num",
+                "gv": "400"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_7Z6E7IUEiMykhMpl",
+        "category": "Function",
+        "x": 640.0000133514404,
+        "y": 493.99999237060547,
+        "wires": [
+            [
+                "sd_wQjSNkvNiUBoQRiB"
+            ],
+            [
+                "sd_Kdts51Vmryh8ReLS"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_wQjSNkvNiUBoQRiB",
+        "type": "SnackBar",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "message": {
+            "type": "str",
+            "value": "Deleted book successfully"
+        },
+        "action": {
+            "type": "str",
+            "value": "Ok"
+        },
+        "duration": {
+            "type": "num",
+            "value": "3000"
+        },
+        "horizontalPosition": "center",
+        "horizontalPositionMap": "",
+        "verticalPosition": "bottom",
+        "verticalPositionMap": "",
+        "panelClass": {
+            "type": "str",
+            "value": ""
+        },
+        "direction": "ltr",
+        "functionName": "sd_wQjSNkvNiUBoQRiB",
+        "category": "General",
+        "x": 786.0000133514404,
+        "y": 394.99999237060547,
+        "wires": [
+            [
+                "sd_5XFZzikFtzgSXQMD"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_2C7rEV6jqmYjloWP",
+        "type": "PageStart",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "updateBook",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "updateBook",
+        "category": "General",
+        "x": 85,
+        "y": 660,
+        "wires": [
+            [
+                "sd_TI2B5kNCx4n3QjHX"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_TI2B5kNCx4n3QjHX",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\npage.confirmMessage=\"Do you want to update this book?\"\npage.showCofirmModal=true\npage.color='blue'\npage.confirmType='update'\n",
+        "functionName": "sd_TI2B5kNCx4n3QjHX",
+        "category": "Function",
+        "x": 165,
+        "y": 660,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_o2x7Qm67RHdR2IlO",
+        "type": "PageStart",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "choseUpdateOrDeleteConfirm",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "choseUpdateOrDeleteConfirm",
+        "category": "General",
+        "x": 85.00001335144043,
+        "y": 433.99999237060547,
+        "wires": [
+            [
+                "sd_3w5mblEpHsD9Eg1J"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "view_booksComponent"
+    },
+    {
+        "id": "sd_3w5mblEpHsD9Eg1J",
+        "type": "PageSwitch",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "confirmType",
+        "propertyType": "this.page",
+        "propertyGv": "this.page.confirmType",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "update",
+                "vt": "str",
+                "gv": "\"update\""
+            },
+            {
+                "t": "eq",
+                "v": "delete",
+                "vt": "str",
+                "gv": "\"delete\""
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_3w5mblEpHsD9Eg1J",
+        "category": "Function",
+        "x": 207.00001430511475,
+        "y": 433.99999237060547,
+        "wires": [
+            [
+                "sd_xzpmAA2c7PA5Jzmj"
+            ],
+            [
+                "sd_2NMkPlBF9psl7zD2"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_xzpmAA2c7PA5Jzmj",
+        "type": "Navigation",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "path": "/update-book",
+        "qparamsMap": {
+            "type": "this.page",
+            "value": "currentRowBookData"
+        },
+        "functionName": "sd_xzpmAA2c7PA5Jzmj",
+        "category": "Navigation",
+        "x": 365.00001335144043,
+        "y": 373.99999237060547,
+        "wires": [
+            [
+                "sd_kdJOiJR9fRAeqN5e"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_kdJOiJR9fRAeqN5e",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\npage.confirmMessage=\"\"\npage.showCofirmModal=false\npage.color='white'\npage.confirmType=''\n",
+        "functionName": "sd_kdJOiJR9fRAeqN5e",
+        "category": "Function",
+        "x": 485.00001335144043,
+        "y": 373.99999237060547,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_5XFZzikFtzgSXQMD",
+        "type": "Script",
+        "z": "sd_nxSaw4R4bANqEjTD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// console.log('current deleted data ', page.currentRowBookData)\nconsole.log('current table data ', page.tableData.paginator)\n\n\nconst currentTableData = page.tableData\nconst deletedRow=page.currentRowBookData\n\nconst itemIndex = currentTableData.findIndex(item => item.id === deletedRow.id);\n\nif (itemIndex > -1) {\n    const newData = [\n        ...currentTableData.slice(0, itemIndex),\n        ...currentTableData.slice(itemIndex + 1)\n    ];\n\n    bh.local.dataSource = newData;\n    bh.local.response.totalDocuments=--page.tableData.paginator.length\n}\n",
+        "functionName": "sd_5XFZzikFtzgSXQMD",
+        "category": "Function",
+        "x": 872.0000133514404,
+        "y": 394.99999237060547,
+        "wires": [
+            [
+                "sd_4CCbcU6kvOvu5YbK"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "view_booksComponent",
+        "generated": true
+    }
+]
