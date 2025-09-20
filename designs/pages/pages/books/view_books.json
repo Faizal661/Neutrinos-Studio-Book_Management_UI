@@ -221,7 +221,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "\nbh.local.dataSource=new MatTableDataSource(bh.local.response.bookData)",
+        "script": "\nbh.local.dataSource=new MatTableDataSource(bh.local.response.bookData)\n\nconsole.log('beofre authstate update')\npage.authSubscribe = bh.system.oauthService.authState().subscribe(state => \n {\n    page.authState = state;\n    alert(JSON.stringify(state));\n    console.log('authstate ====>',page.authState);\n })\nconsole.log('after authstate update')",
         "functionName": "sd_Nj4CNr8uVDkcsVRR",
         "category": "Function",
         "x": 405,
@@ -291,6 +291,7 @@
         "nodeType": "flow",
         "name": "",
         "method": "get",
+        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "\"http://localhost:8081/api/books\"",
         "urlMappingObj": {
@@ -298,11 +299,14 @@
             "mapVarValue": "http://localhost:8081/api/books"
         },
         "ret": "json",
+        "retMapping": "",
         "retMappingObj": {},
         "observe": "",
+        "observeMapping": "",
         "observeMappingObj": {},
         "reportProgress": false,
         "withCreds": false,
+        "reqBody": "",
         "reqBodyObj": {
             "mapVarType": "this.page",
             "mapVarValue": ""
@@ -314,7 +318,10 @@
         },
         "headers": {},
         "headersObj": [],
+        "headerMapping": "",
         "headerMappingObj": {},
+        "params": [],
+        "paramsObj": {},
         "paramMapping": "bh.local.query",
         "paramMappingObj": {
             "mapVarType": "bh.local",
@@ -823,10 +830,16 @@
         "nodeType": "flow",
         "name": "",
         "path": "/update-book",
+        "pathMap": "",
+        "pathparams": "",
+        "pathparamsMap": "",
+        "qparams": "",
         "qparamsMap": {
             "type": "this.page",
             "value": "currentRowBookData"
         },
+        "qparamsArray": "",
+        "resultMapping": "",
         "functionName": "sd_xzpmAA2c7PA5Jzmj",
         "category": "Navigation",
         "x": 365.00001335144043,

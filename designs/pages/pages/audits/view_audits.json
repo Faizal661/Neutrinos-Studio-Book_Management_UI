@@ -23,8 +23,8 @@
         "pageVariables": [],
         "functionName": "sd_dhAEgvJh8pT3qcRI",
         "category": "Lifecycle Events",
-        "x": 74.00000190734863,
-        "y": 142.0000057220459,
+        "x": 125,
+        "y": 60,
         "wires": [
             [
                 "sd_NYTz8KmB6gopr9PS"
@@ -62,8 +62,8 @@
         ],
         "functionName": "sd_ptBpr4zohQSa9UI1",
         "category": "Function",
-        "x": 803.0000114440918,
-        "y": 213.81250762939453,
+        "x": 814.0000095367432,
+        "y": 171.81250190734863,
         "wires": [
             [
                 "sd_DU2wUoAqr4kmX84L"
@@ -84,8 +84,8 @@
         "script": "this.page.tableData.sort = this.MatSort;\nthis.page.tableData.paginator = this.MatPaginator;\n\n\npage.operations = [\n   {value: 'READ_BOOK', viewValue: 'BOOK READ'},\n   {value: 'CREATE_BOOK', viewValue: 'BOOK CREATE'},\n   {value: 'UPDATE_BOOK', viewValue: 'BOOK UPDATE'},\n   {value: 'DELETE_BOOK', viewValue: 'BOOK DELETE'},\n   {value: 'GENERATE_PDF', viewValue: 'PDF GENERATE'},\n   {value: 'LOGIN', viewValue: 'USER LOGIN'},\n   {value: 'LOGOUT', viewValue: 'USER LOGOUT'},\n ];\n\n\nconsole.log('page startDate', page.startDate)\nconsole.log('page endDate', page.endDate)\n\n",
         "functionName": "sd_DU2wUoAqr4kmX84L",
         "category": "Function",
-        "x": 910.0000133514404,
-        "y": 214.81250762939453,
+        "x": 921.0000114440918,
+        "y": 172.81250190734863,
         "wires": [
             []
         ],
@@ -137,8 +137,8 @@
         "paramMappingObj": {},
         "functionName": "sd_NYTz8KmB6gopr9PS",
         "category": "HTTP",
-        "x": 235.00000190734863,
-        "y": 140.8125057220459,
+        "x": 286,
+        "y": 58.8125,
         "wires": [
             [
                 "sd_8cAnef9EeqQ1ek0l"
@@ -162,8 +162,8 @@
         "flow_type": "sync",
         "functionName": "pagination",
         "category": "General",
-        "x": 128.00000381469727,
-        "y": 300.81249237060547,
+        "x": 125,
+        "y": 200,
         "wires": [
             [
                 "sd_mALOTDlr5ZG7STc5"
@@ -183,8 +183,8 @@
         "script": "const pageIndex = page.tableData.paginator.pageIndex;\nconst pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = pageIndex + 1;\nbh.local.limit = pageSize;\n\n",
         "functionName": "paginationLogic",
         "category": "Function",
-        "x": 230.72726821899414,
-        "y": 300.81250762939453,
+        "x": 227.72726440429688,
+        "y": 200.00001525878906,
         "wires": [
             [
                 "sd_hZYSmCtT4jBWQR9A"
@@ -205,8 +205,8 @@
         "script": "\nbh.local.dataSource=new MatTableDataSource(bh.local.response.auditLogsData)\n\n\n page.selected=[];\n page.startDate=null;\n page.endDate=new Date();",
         "functionName": "sd_8cAnef9EeqQ1ek0l",
         "category": "Function",
-        "x": 401.00000190734863,
-        "y": 139.8125057220459,
+        "x": 452,
+        "y": 57.8125,
         "wires": [
             [
                 "sd_OSrPXNNXyK9n2sOF"
@@ -252,8 +252,8 @@
         ],
         "functionName": "sd_OSrPXNNXyK9n2sOF",
         "category": "Function",
-        "x": 703.0000114440918,
-        "y": 213.81250762939453,
+        "x": 714.0000095367432,
+        "y": 171.81250190734863,
         "wires": [
             [
                 "sd_ptBpr4zohQSa9UI1"
@@ -310,8 +310,8 @@
         },
         "functionName": "sd_Hu1LH4yLTDQZbp76",
         "category": "HTTP",
-        "x": 457.0000057220459,
-        "y": 300.81249237060547,
+        "x": 454.00000190734863,
+        "y": 200,
         "wires": [
             [
                 "sd_031pqSMYINsGeSoM"
@@ -332,8 +332,8 @@
         "script": "bh.local.dataSource=bh.local.response.auditLogsData",
         "functionName": "sd_031pqSMYINsGeSoM",
         "category": "Function",
-        "x": 544.0000076293945,
-        "y": 298.81249237060547,
+        "x": 541.0000038146973,
+        "y": 198,
         "wires": [
             [
                 "sd_OSrPXNNXyK9n2sOF"
@@ -357,8 +357,8 @@
         "flow_type": "sync",
         "functionName": "filtered",
         "category": "General",
-        "x": 110.00000095367432,
-        "y": 473.79999351501465,
+        "x": 125,
+        "y": 340,
         "wires": [
             [
                 "sd_3jexMU6Dmg1f4Nq9"
@@ -378,8 +378,8 @@
         "script": "const pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = 1;\nbh.local.limit = pageSize;\n\n\npage.filter={\n    operations:page.selected,\n    startDate:page.startDate,\n    endDate:page.endDate\n}",
         "functionName": "filterPagination",
         "category": "Function",
-        "x": 215.00000381469727,
-        "y": 430.79999351501465,
+        "x": 225,
+        "y": 340,
         "wires": [
             [
                 "sd_hZYSmCtT4jBWQR9A"
@@ -400,8 +400,8 @@
         "script": "console.log('bh.local.currentPage ==',bh.local.currentPage)\nconsole.log('bh.local.limit ==',bh.local.limit)\n\nbh.local.query={\n    ...page.filter,\n    page:bh.local.currentPage,\n    limit:bh.local.limit\n}\n\n\nconsole.log('pagination query === ',bh.local.query)",
         "functionName": "createQueryParams",
         "category": "Function",
-        "x": 348.0250301361084,
-        "y": 301.82496643066406,
+        "x": 345.02502632141113,
+        "y": 201.0124740600586,
         "wires": [
             [
                 "sd_Hu1LH4yLTDQZbp76"
@@ -425,8 +425,8 @@
         "flow_type": "sync",
         "functionName": "clearFilter",
         "category": "General",
-        "x": 254.02502918243408,
-        "y": 548.8124961853027,
+        "x": 205,
+        "y": 440,
         "wires": [
             [
                 "sd_3no30brsAE7lDQeR"
@@ -446,8 +446,8 @@
         "script": "const pageIndex = page.tableData.paginator.pageIndex;\nconst pageSize = page.tableData.paginator.pageSize;\n\nbh.local.currentPage = 1;\nbh.local.limit = pageSize;\n\npage.filter = {}\npage.selected = [];\npage.startDate = null;\npage.endDate = new Date();",
         "functionName": "clearFilterLogic",
         "category": "Function",
-        "x": 344.00000381469727,
-        "y": 446.79999351501465,
+        "x": 305,
+        "y": 440,
         "wires": [
             [
                 "sd_hZYSmCtT4jBWQR9A"
@@ -471,8 +471,8 @@
         "flow_type": "sync",
         "functionName": "pdfGenerate",
         "category": "General",
-        "x": 587.5312805175781,
-        "y": 478.51563453674316,
+        "x": 125,
+        "y": 560,
         "wires": [
             [
                 "sd_8Hd79VZ4YrbXYAez"
@@ -492,8 +492,8 @@
         "script": "\nbh.local.pdfGenerateURL='http://localhost:8081/api/audits/report/pdf'\n\nbh.local.query={\n    operations:page.selected,\n    startDate:page.startDate,\n    endDate:page.endDate\n}\n\nconsole.log('query params ---',bh.local.query)",
         "functionName": "sd_8Hd79VZ4YrbXYAez",
         "category": "Function",
-        "x": 727.5312690734863,
-        "y": 478.5313148498535,
+        "x": 264.9999885559082,
+        "y": 560.0156803131104,
         "wires": [
             [
                 "sd_2zJoV5mBZEVDTqtK"
@@ -550,8 +550,8 @@
         },
         "functionName": "sd_2zJoV5mBZEVDTqtK",
         "category": "HTTP",
-        "x": 880,
-        "y": 479.85936164855957,
+        "x": 417.4687194824219,
+        "y": 561.3437271118164,
         "wires": [
             [
                 "sd_rZq58zaQesGyeqdF"
@@ -569,11 +569,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log('res from pdf generate === ', bh.local.blob)\n\nlet blob = bh.local.blob\nconst url = window.URL.createObjectURL(blob);\nconst a = document.createElement('a');\na.href = url;\na.download = 'audit-report.pdf';\na.click();\n\nwindow.URL.revokeObjectURL(url);",
+        "script": "console.log('res from pdf generate === ', bh.local.blob)\n\nlet blob = bh.local.blob\nconst url = window.URL.createObjectURL(blob);\nconst a = document.createElement('a');\na.href = url;\na.download = 'audit-report.pdf';\na.click();\n\nwindow.URL.revokeObjectURL(url);\n",
         "functionName": "sd_rZq58zaQesGyeqdF",
         "category": "Function",
-        "x": 1003.7500295639038,
-        "y": 478.50001335144043,
+        "x": 545,
+        "y": 560,
         "wires": [
             []
         ],

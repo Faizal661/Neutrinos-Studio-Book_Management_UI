@@ -376,6 +376,7 @@ export class view_auditsComponent {
       a.click();
 
       window.URL.revokeObjectURL(url);
+
       //appendnew_next_sd_rZq58zaQesGyeqdF
       return bh;
     } catch (e) {

@@ -25,10 +25,10 @@
             "appName": "book-management-ui",
             "namespace": "com.neutrinos-training.book-management-ui",
             "useDefaultExceptionUI": true,
-            "isIDSEnabled": "false",
+            "isIDSEnabled": "true",
             "SSD_BASE_PATH": "/api",
             "SSD_DEFAULT_PORT": "8081",
-            "webAppMountpoint": "web",
+            "webAppMountpoint": "/",
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
         }
@@ -42,10 +42,10 @@
             "appName": "book-management-ui",
             "namespace": "com.neutrinos-training.book-management-ui",
             "useDefaultExceptionUI": true,
-            "isIDSEnabled": "false",
+            "isIDSEnabled": "true",
             "SSD_BASE_PATH": "/api",
             "SSD_DEFAULT_PORT": "8081",
-            "webAppMountpoint": "web",
+            "webAppMountpoint": "/",
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
         }

@@ -105,11 +105,31 @@ export const appProviders = [
 
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_START
 export const appRoutes = [
-  { path: 'home', component: view_booksComponent },
-  { path: 'add-book', component: add_bookComponent },
-  { path: 'search-book', component: search_bookComponent },
-  { path: 'update-book', component: update_bookComponent },
-  { path: 'audits', component: view_auditsComponent },
+  {
+    path: 'home',
+    component: view_booksComponent,
+    canActivate: [NeutrinosAuthGuardService],
+  },
+  {
+    path: 'add-book',
+    component: add_bookComponent,
+    canActivate: [NeutrinosAuthGuardService],
+  },
+  {
+    path: 'search-book',
+    component: search_bookComponent,
+    canActivate: [NeutrinosAuthGuardService],
+  },
+  {
+    path: 'update-book',
+    component: update_bookComponent,
+    canActivate: [NeutrinosAuthGuardService],
+  },
+  {
+    path: 'audits',
+    component: view_auditsComponent,
+    canActivate: [NeutrinosAuthGuardService],
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

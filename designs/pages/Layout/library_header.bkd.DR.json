@@ -370,7 +370,7 @@
                     }
                 ]
             },
-            "0e3567d3-de62-881e-08d2-5769ba5bf392": {
+            "b0b8d960-bad9-9a4a-341f-e90aa27155ab": {
                 "paletteKey": "NG-RaisedButton",
                 "parentEditorKey": "3265dc23-1104-247d-ad5b-1e1613b68692",
                 "commentid": null,
@@ -437,6 +437,77 @@
                         "_value": "page.currentPath!=='home'",
                         "_type": "kv",
                         "_attrDef": "c"
+                    }
+                ]
+            },
+            "0e3567d3-de62-881e-08d2-5769ba5bf392": {
+                "paletteKey": "NG-RaisedButton",
+                "parentEditorKey": "3265dc23-1104-247d-ad5b-1e1613b68692",
+                "commentid": null,
+                "designerReference": [
+                    {
+                        "_key": "style",
+                        "_value": "margin-left:10px;",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "class",
+                        "_value": [
+                            "clear-btn"
+                        ],
+                        "_type": "dav",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "buttonname",
+                        "_value": "LOGOUT",
+                        "_type": "a",
+                        "_attrDef": "p",
+                        "_useAsLabel": true
+                    },
+                    {
+                        "_key": "color",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "(click)",
+                        "_value": "logout()",
+                        "_type": "kv",
+                        "_attrDef": "p",
+                        "objValue": {
+                            "nodeID": "sd_NbAVcSNTNviF2O76",
+                            "functionName": "logout",
+                            "activeTree": "pages",
+                            "z": "sd_HfISRxZpqCpcLM4i",
+                            "input": []
+                        }
+                    },
+                    {
+                        "_key": "[disabled]",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "[disableRipple]",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "type",
+                        "_value": "",
+                        "_type": "kv",
+                        "_attrDef": "p"
+                    },
+                    {
+                        "_key": "routerLink",
+                        "_value": "../home",
+                        "_type": "kv",
+                        "_attrDef": "p"
                     }
                 ]
             }

@@ -2,24 +2,51 @@
     "routes": [
         {
             "path": "home",
-            "component": "view_booksComponent"
+            "component": "view_booksComponent",
+            "resolve": {
+                "edited": true,
+                "value": ""
+            },
+            "canActivate": {
+                "edited": true,
+                "value": "NeutrinosAuthGuardService "
+            },
+            "redirectTo": ""
         },
         {
             "path": "add-book",
             "component": "add_bookComponent",
-            "pathMatch": ""
+            "pathMatch": "",
+            "canActivate": {
+                "edited": true,
+                "value": "NeutrinosAuthGuardService "
+            },
+            "redirectTo": ""
         },
         {
             "path": "search-book",
-            "component": "search_bookComponent"
+            "component": "search_bookComponent",
+            "canActivate": {
+                "edited": true,
+                "value": "NeutrinosAuthGuardService "
+            },
+            "redirectTo": ""
         },
         {
             "path": "update-book",
-            "component": "update_bookComponent"
+            "component": "update_bookComponent",
+            "canActivate": {
+                "edited": true,
+                "value": "NeutrinosAuthGuardService "
+            }
         },
         {
             "path": "audits",
-            "component": "view_auditsComponent"
+            "component": "view_auditsComponent",
+            "canActivate": {
+                "edited": true,
+                "value": "NeutrinosAuthGuardService "
+            }
         },
         {
             "path": "''",

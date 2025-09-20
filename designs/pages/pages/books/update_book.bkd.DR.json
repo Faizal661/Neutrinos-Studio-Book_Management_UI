@@ -151,7 +151,8 @@
             "9a0cccc8-0dd6-90c6-8f60-52d60a9b0d43": {
                 "paletteKey": "FlexLayoutCol",
                 "parentEditorKey": "4458474b-b642-d2c2-dd08-a441621f32fc",
-                "commentid": null,
+                "isCommented": "true",
+                "commentid": "1757669054310",
                 "designerReference": [
                     {
                         "_key": "componentLabel",
@@ -214,7 +215,8 @@
                 "e3b2bae2-9eb0-d7f8-07b5-ed38cd32a647": {
                     "paletteKey": "NG-RaisedButton",
                     "parentEditorKey": "9a0cccc8-0dd6-90c6-8f60-52d60a9b0d43",
-                    "commentid": null,
+                    "isCommented": "true",
+                    "commentid": "1757669054310",
                     "designerReference": [
                         {
                             "_key": "style",
@@ -290,7 +292,7 @@
                     },
                     {
                         "_key": "style",
-                        "_value": "",
+                        "_value": "margin-top:25px;",
                         "_type": "kv",
                         "_attrDef": "p"
                     },

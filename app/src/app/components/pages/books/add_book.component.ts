@@ -40,7 +40,7 @@ export class add_bookComponent {
       .get(SDPageCommonService)
       .constructFlowObject(this);
     {
-      this.sd_H2Z85r4d2cOUGkbl(bh);
+      this.oninit(bh);
     }
   }
 
@@ -52,10 +52,10 @@ export class add_bookComponent {
     //append_listeners
   }
 
-  sd_H2Z85r4d2cOUGkbl(bh) {
+  oninit(bh) {
     try {
-      bh = this.sd_IVPZRZ8iMLweeWvp(bh);
-      //appendnew_next_sd_H2Z85r4d2cOUGkbl
+      bh = this.oninitpagevariable(bh);
+      //appendnew_next_oninit
       return bh;
     } catch (e) {
       return this.errorHandler(bh, e, 'sd_H2Z85r4d2cOUGkbl');
@@ -78,10 +78,10 @@ export class add_bookComponent {
   }
   //appendnew_flow_add_bookComponent_start
 
-  sd_IVPZRZ8iMLweeWvp(bh) {
+  oninitpagevariable(bh) {
     try {
       bh = this.sd_ZhcUYeZkG5PboJyt(bh);
-      //appendnew_next_sd_IVPZRZ8iMLweeWvp
+      //appendnew_next_oninitpagevariable
       return bh;
     } catch (e) {
       return this.errorHandler(bh, e, 'sd_IVPZRZ8iMLweeWvp');

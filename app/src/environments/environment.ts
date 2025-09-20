@@ -7,8 +7,8 @@ export const environment = {
         "appName": "book-management-ui",
         "namespace": "com.neutrinos-training.book-management-ui",
         "useDefaultExceptionUI": true,
-        "isIDSEnabled": "false",
-        "webAppMountpoint": "web",
+        "isIDSEnabled": "true",
+        "webAppMountpoint": "/",
         "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
     }
 }

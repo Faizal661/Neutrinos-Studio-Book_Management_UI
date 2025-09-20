@@ -56,6 +56,20 @@ export class library_headerComponent {
     }
   }
 
+  logout(...others) {
+    let bh: any = {};
+    try {
+      bh = this.__page_injector__
+        .get(SDPageCommonService)
+        .constructFlowObject(this);
+      bh.input = {};
+      bh.local = {};
+      bh = this.sd_6bkPRnyT5R8MKprj(bh);
+      //appendnew_next_logout
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_NbAVcSNTNviF2O76');
+    }
+  }
   //appendnew_flow_library_headerComponent_start
 
   sd_VeDnbigzaio2685K(bh) {
@@ -81,6 +95,17 @@ export class library_headerComponent {
       return bh;
     } catch (e) {
       return this.errorHandler(bh, e, 'sd_auV2cHAvjGejYQCg');
+    }
+  }
+
+  sd_6bkPRnyT5R8MKprj(bh) {
+    try {
+      const page = this.page;
+      bh.system.oauthService.logout();
+      //appendnew_next_sd_6bkPRnyT5R8MKprj
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_6bkPRnyT5R8MKprj');
     }
   }
 

@@ -178,6 +178,16 @@ export class view_booksComponent {
     try {
       const page = this.page;
       bh.local.dataSource = new MatTableDataSource(bh.local.response.bookData);
+
+      console.log('beofre authstate update');
+      page.authSubscribe = bh.system.oauthService
+        .authState()
+        .subscribe((state) => {
+          page.authState = state;
+          alert(JSON.stringify(state));
+          console.log('authstate ====>', page.authState);
+        });
+      console.log('after authstate update');
       bh = this.sd_4CCbcU6kvOvu5YbK(bh);
       //appendnew_next_sd_Nj4CNr8uVDkcsVRR
       return bh;
