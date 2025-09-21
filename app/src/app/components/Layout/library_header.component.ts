@@ -102,6 +102,7 @@ export class library_headerComponent {
     try {
       const page = this.page;
       bh.system.oauthService.logout();
+      page.loading = true;
       //appendnew_next_sd_6bkPRnyT5R8MKprj
       return bh;
     } catch (e) {

@@ -21,6 +21,7 @@
         "isbn-input-box",
         "input-box",
         "audit-page-top-container",
+        "loading-backdrop",
         "modal-backdrop",
         "modal-content"
     ]

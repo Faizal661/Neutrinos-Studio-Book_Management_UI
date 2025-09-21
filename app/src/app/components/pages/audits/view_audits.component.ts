@@ -242,7 +242,7 @@ export class view_auditsComponent {
         limit: bh.local.limit,
       };
 
-      console.log('pagination query === ', bh.local.query);
+      console.log('query === ', bh.local.query);
       bh = this.sd_Hu1LH4yLTDQZbp76(bh);
       //appendnew_next_createQueryParams
       return bh;
@@ -336,6 +336,8 @@ export class view_auditsComponent {
       };
 
       console.log('query params ---', bh.local.query);
+
+      page.loading = true;
       bh = this.sd_2zJoV5mBZEVDTqtK(bh);
       //appendnew_next_sd_8Hd79VZ4YrbXYAez
       return bh;
@@ -366,6 +368,7 @@ export class view_auditsComponent {
   sd_rZq58zaQesGyeqdF(bh) {
     try {
       const page = this.page;
+      page.loading = false;
       console.log('res from pdf generate === ', bh.local.blob);
 
       let blob = bh.local.blob;

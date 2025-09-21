@@ -120,6 +120,20 @@ export class update_bookComponent {
       const page = this.page;
       console.log('updated data ', page.updatedData);
 
+      if (!page.updatedData.title || !page.updatedData.title.trim().length) {
+        throw new Error('Title is empty');
+      } else if (
+        !page.updatedData.publishers ||
+        !page.updatedData.publishers.trim().length
+      ) {
+        throw new Error('Publisher field is empty');
+      } else if (
+        !page.updatedData.publishedYear ||
+        !page.updatedData.publishedYear.trim().length
+      ) {
+        throw new Error('Published Year field is empty');
+      }
+
       bh.local.updateBookURL = `http://localhost:8081/api/books/${page.updatedData.isbn}`;
 
       bh = this.sd_darB2qMAIuR7aI6i(bh);
@@ -228,6 +242,36 @@ export class update_bookComponent {
     }
   }
 
+  sd_aq0lheBM8v9yrFly(bh) {
+    try {
+      const page = this.page;
+      bh.local.errorMessage =
+        bh.error.message || 'Failed to update book details';
+      bh = this.sd_9H2k7DnMaS5MuZ57(bh);
+      //appendnew_next_sd_aq0lheBM8v9yrFly
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_aq0lheBM8v9yrFly');
+    }
+  }
+
+  sd_9H2k7DnMaS5MuZ57(bh) {
+    try {
+      this.__page_injector__
+        .get(MatSnackBar)
+        .open(bh.local.errorMessage, 'Close', {
+          duration: 3000,
+          direction: 'ltr',
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      //appendnew_next_sd_9H2k7DnMaS5MuZ57
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_9H2k7DnMaS5MuZ57');
+    }
+  }
+
   //appendnew_node
 
   ngOnDestroy() {
@@ -242,7 +286,24 @@ export class update_bookComponent {
     console.error(e);
     bh.error = e;
     bh.errorSource = src;
-    throw e;
+    if (
+      false ||
+      this.searchBookCatchNode(bh)
+      /*appendnew_next_Catch*/
+    ) {
+      return bh;
+    } else {
+      throw e;
+    }
+  }
+  searchBookCatchNode(bh) {
+    const catchConnectedNodes = ['sd_aq0lheBM8v9yrFly', 'sd_9H2k7DnMaS5MuZ57'];
+    if (catchConnectedNodes.includes(bh.errorSource)) {
+      return false;
+    }
+    bh = this.sd_aq0lheBM8v9yrFly(bh);
+    //appendnew_next_searchBookCatchNode
+    return true;
   }
   //appendnew_flow_update_bookComponent_Catch
 }

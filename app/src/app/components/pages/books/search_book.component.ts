@@ -106,6 +106,7 @@ export class search_bookComponent {
 
   sd_e69P7MchohGF0XIZ(bh) {
     try {
+      this.page.loading = undefined;
       bh = this.sd_gswLmarvHAWLarsW(bh);
       //appendnew_next_sd_e69P7MchohGF0XIZ
       return bh;
@@ -134,8 +135,13 @@ export class search_bookComponent {
   fetchIsbnBookScript(bh) {
     try {
       const page = this.page;
+      if (!page.pageData.isbn || page.pageData.isbn.trim().length < 1) {
+        throw new Error('ISBN is empty');
+      }
+
       bh.local.searchBookURL = `http://localhost:8081/api/books/${page.pageData.isbn}`;
 
+      page.loading = true;
       bh = this.fetchBookDetails(bh);
       //appendnew_next_fetchIsbnBookScript
       return bh;
@@ -169,16 +175,20 @@ export class search_bookComponent {
       console.log('res===>>>', bh.input.response);
       const bookData = bh.input.response.openApiLibraryData;
 
+      console.log('identifer', bookData?.identifiers);
+      if (!bookData?.identifiers) {
+        throw new Error('ISBN not exists in OpenAPI Library');
+      }
       bh.local.bookData = {
-        id: bookData.payload.isbn_10[0],
-        isbn: bookData.payload.isbn_13[0],
-        title: bookData.payload.title,
-        publishers: bookData.payload.publishers[0],
-        publishedYear: bookData.payload.publish_date,
+        id: bookData.identifiers.isbn_10,
+        isbn: page.pageData.isbn,
+        title: bookData.title,
+        publishers: bookData.authors[0].name,
+        publishedYear: bookData.publish_date,
       };
 
       page.hideButton = Boolean(true);
-
+      page.loading = false;
       bh = this.fetchIsbnBookPagevariables(bh);
       //appendnew_next_fetchIsbnBookScript2
       return bh;
@@ -242,6 +252,8 @@ export class search_bookComponent {
       bh.local.body = {
         isbn: page.pageData.isbn,
       };
+
+      page.loading = true;
       bh = this.createBookHttpReq(bh);
       //appendnew_next_createBookScript
       return bh;
@@ -261,11 +273,23 @@ export class search_bookComponent {
         body: bh.local.body,
       };
       bh.local.response = await this.sdService.nHttpRequest(requestOptions);
-      bh = this.sd_CT7d7NXpB1cFTGZt(bh);
+      bh = this.sd_0MbCC6wbpgUrWZaV(bh);
       //appendnew_next_createBookHttpReq
       return bh;
     } catch (e) {
       return this.errorHandler(bh, e, 'sd_UtLo5RWtmMgQRxNq');
+    }
+  }
+
+  sd_0MbCC6wbpgUrWZaV(bh) {
+    try {
+      const page = this.page;
+      page.loading = false;
+      bh = this.sd_CT7d7NXpB1cFTGZt(bh);
+      //appendnew_next_sd_0MbCC6wbpgUrWZaV
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_0MbCC6wbpgUrWZaV');
     }
   }
 
@@ -330,11 +354,24 @@ export class search_bookComponent {
     }
   }
 
+  sd_kUxDcF3rxleuaLA3(bh) {
+    try {
+      const page = this.page;
+      bh.local.errorMessage =
+        bh.error.message || 'Failed to fetch book details';
+      bh = this.sd_KFX0WszOfRZUvEIr(bh);
+      //appendnew_next_sd_kUxDcF3rxleuaLA3
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_kUxDcF3rxleuaLA3');
+    }
+  }
+
   sd_KFX0WszOfRZUvEIr(bh) {
     try {
       this.__page_injector__
         .get(MatSnackBar)
-        .open(bh.input.response.message, 'Close', {
+        .open(bh.local.errorMessage, 'Close', {
           duration: 3000,
           direction: 'ltr',
           horizontalPosition: 'center',
@@ -352,11 +389,41 @@ export class search_bookComponent {
     try {
       const page = this.page;
       page.hideButton = Boolean(false);
-
+      page.loading = false;
       //appendnew_next_sd_ueP4Wmb3p0VW4BhH
       return bh;
     } catch (e) {
       return this.errorHandler(bh, e, 'sd_ueP4Wmb3p0VW4BhH');
+    }
+  }
+
+  sd_KlUHqsoIrgkfiGZT(bh) {
+    try {
+      const page = this.page;
+      bh.local.errorMessage = 'Failed to add book ';
+      bh = this.sd_WQDbtuUYYfUnackd(bh);
+      //appendnew_next_sd_KlUHqsoIrgkfiGZT
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_KlUHqsoIrgkfiGZT');
+    }
+  }
+
+  sd_WQDbtuUYYfUnackd(bh) {
+    try {
+      this.__page_injector__
+        .get(MatSnackBar)
+        .open(bh.local.errorMessage, 'Close', {
+          duration: 3000,
+          direction: 'ltr',
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      bh = this.sd_ueP4Wmb3p0VW4BhH(bh);
+      //appendnew_next_sd_WQDbtuUYYfUnackd
+      return bh;
+    } catch (e) {
+      return this.errorHandler(bh, e, 'sd_WQDbtuUYYfUnackd');
     }
   }
 
@@ -376,7 +443,8 @@ export class search_bookComponent {
     bh.errorSource = src;
     if (
       false ||
-      this.sd_tuPHUf4aHUpEQlkv(bh)
+      this.searchBookCatchNode(bh) ||
+      this.creatingBookCatchNode(bh)
       /*appendnew_next_Catch*/
     ) {
       return bh;
@@ -384,7 +452,7 @@ export class search_bookComponent {
       throw e;
     }
   }
-  sd_tuPHUf4aHUpEQlkv(bh) {
+  searchBookCatchNode(bh) {
     const nodes = [
       'sd_jbw0BYEQOHa7Pl1N',
       'sd_WwAzAMQcn4oGrky0',
@@ -393,8 +461,17 @@ export class search_bookComponent {
       'sd_zzuWwWImxC4WIOvJ',
     ];
     if (nodes.includes(bh.errorSource)) {
-      bh = this.sd_KFX0WszOfRZUvEIr(bh);
-      //appendnew_next_sd_tuPHUf4aHUpEQlkv
+      bh = this.sd_kUxDcF3rxleuaLA3(bh);
+      //appendnew_next_searchBookCatchNode
+      return true;
+    }
+    return false;
+  }
+  creatingBookCatchNode(bh) {
+    const nodes = ['sd_UtLo5RWtmMgQRxNq'];
+    if (nodes.includes(bh.errorSource)) {
+      bh = this.sd_KlUHqsoIrgkfiGZT(bh);
+      //appendnew_next_creatingBookCatchNode
       return true;
     }
     return false;

@@ -24,6 +24,37 @@
             }
         ]
     },
+    "4501bacb-d082-3aad-0fca-84b82b3da0bc": {
+        "paletteKey": "NEUTRINOS_VIEW_loading_animation",
+        "commentid": null,
+        "designerReference": [
+            {
+                "_key": "componentLabel",
+                "_value": "loading_animation",
+                "_type": "kv",
+                "_attrDef": "p",
+                "_useAsLabel": true
+            },
+            {
+                "_key": "style",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "class",
+                "_value": "",
+                "_type": "dav",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "*ngIf",
+                "_value": "page.loading",
+                "_type": "kv",
+                "_attrDef": "c"
+            }
+        ]
+    },
     "f94b8a03-b680-706f-44ce-0b10f5d268d6": {
         "paletteKey": "FlexLayoutCol",
         "commentid": null,

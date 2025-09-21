@@ -1,5 +1,9 @@
+<bh-loading_animation *ngIf="page.loading"></bh-loading_animation>
 <header class="view-page-title">
   <h1>
-    Book Management</h1>
+    Book Management &gt;
+    <span *ngIf="page.currentPath === &apos;home&apos;">Home</span>
+    <span *ngIf="page.currentPath === &apos;audits&apos;">Audit</span>
+  </h1>
   <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button routerLink="../audits" class="audit-view-btn" *ngIf="page.currentPath!==&apos;audits&apos;">Audit Records</button><button mat-raised-button style="margin-left:10px;" routerLink="../home" class="home-page-btn" *ngIf="page.currentPath!==&apos;home&apos;">Home Page</button><button mat-raised-button style="margin-left:10px;" routerLink="../home" class="clear-btn" (click)="logout()">LOGOUT</button></div>
 </header>

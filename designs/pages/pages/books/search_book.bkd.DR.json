@@ -281,6 +281,7 @@
                 "paletteKey": "NG-Input",
                 "parentEditorKey": "5168f5fc-43d3-949a-2497-d71fd33eaa39",
                 "isAdvancedComponent": true,
+                "isCommented": "false",
                 "commentid": null,
                 "designerReference": [
                     {
@@ -306,7 +307,7 @@
                     },
                     {
                         "_key": "value",
-                        "_value": "9780061120084",
+                        "_value": "",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -1867,6 +1868,37 @@
                 }
             }
         }
+    },
+    "59240ce2-e1f0-402a-027b-df1f36f8b0ee": {
+        "paletteKey": "NEUTRINOS_VIEW_loading_animation",
+        "commentid": null,
+        "designerReference": [
+            {
+                "_key": "componentLabel",
+                "_value": "loading_animation",
+                "_type": "kv",
+                "_attrDef": "p",
+                "_useAsLabel": true
+            },
+            {
+                "_key": "style",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "class",
+                "_value": "",
+                "_type": "dav",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "*ngIf",
+                "_value": "page.loading",
+                "_type": "kv",
+                "_attrDef": "c"
+            }
+        ]
     },
     "5e0a1f13-a533-a0e9-20b8-ef1e76309eaa": {
         "paletteKey": "NEUTRINOS_VIEW_library_footer",

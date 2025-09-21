@@ -17,10 +17,14 @@
         "viewType": "common",
         "nodeType": "start",
         "name": "",
+        "inputVariables": [],
+        "localVariables": [],
+        "outputVariables": [],
+        "pageVariables": [],
         "functionName": "sd_45nNi0RUuUibfU3q",
         "category": "Lifecycle Events",
-        "x": 106.0250244140625,
-        "y": 105.8375015258789,
+        "x": 145,
+        "y": 100,
         "wires": [
             [
                 "sd_VeDnbigzaio2685K"
@@ -37,16 +41,14 @@
         "viewType": "pages",
         "nodeType": "flow",
         "name": "",
-        "tmpOp": "",
-        "tmpOpType": "",
         "operationType": "url",
         "operation": "keys",
         "key": "bh",
         "resultMapping": "bh.local.url",
         "functionName": "sd_VeDnbigzaio2685K",
         "category": "Navigation",
-        "x": 235.00000381469727,
-        "y": 111.80000686645508,
+        "x": 245,
+        "y": 100,
         "wires": [
             [
                 "sd_auV2cHAvjGejYQCg"
@@ -79,8 +81,8 @@
         "script": "page.currentPath=bh.local.url[0].path\n\n// console.log('curent page url ',bh.local.url)\n// console.log('curent path ',page.currentPath)",
         "functionName": "sd_auV2cHAvjGejYQCg",
         "category": "Function",
-        "x": 364,
-        "y": 102.82500457763672,
+        "x": 345,
+        "y": 100,
         "wires": [
             []
         ],
@@ -102,8 +104,8 @@
         "flow_type": "sync",
         "functionName": "logout",
         "category": "General",
-        "x": 200,
-        "y": 260,
+        "x": 148.0000057220459,
+        "y": 253.99999237060547,
         "wires": [
             [
                 "sd_6bkPRnyT5R8MKprj"
@@ -120,11 +122,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.system.oauthService.logout();",
+        "script": "bh.system.oauthService.logout();\npage.loading=true",
         "functionName": "sd_6bkPRnyT5R8MKprj",
         "category": "Function",
-        "x": 360,
-        "y": 280,
+        "x": 263.0000057220459,
+        "y": 253.99999237060547,
         "wires": [
             []
         ],

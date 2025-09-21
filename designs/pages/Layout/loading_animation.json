@@ -1,0 +1,56 @@
+[
+    {
+        "id": "sd_IXn17FrnGrsBLNMc",
+        "type": "tab",
+        "createdDate": "2025-09-21T14:10:43.176Z",
+        "label": "loading_animation",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "loading_animationComponent"
+    },
+    {
+        "id": "sd_osdOs4Hp45dS4GW7",
+        "type": "OnInit",
+        "z": "sd_IXn17FrnGrsBLNMc",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_osdOs4Hp45dS4GW7",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_Sw52aRvAnHI2z7il"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "loading_animationComponent"
+    },
+    {
+        "id": "sd_Sw52aRvAnHI2z7il",
+        "type": "PageVariables",
+        "z": "sd_IXn17FrnGrsBLNMc",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_Sw52aRvAnHI2z7il",
+        "category": "Function",
+        "x": 180,
+        "y": 30,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loading_animationComponent",
+        "generated": true
+    }
+]

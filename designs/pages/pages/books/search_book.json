@@ -24,7 +24,7 @@
         "functionName": "sd_XUX3LnHzQOUbRGJ2",
         "category": "Lifecycle Events",
         "x": 105,
-        "y": 80,
+        "y": 60,
         "wires": [
             [
                 "sd_e69P7MchohGF0XIZ"
@@ -44,11 +44,19 @@
         "inputs": 1,
         "outputs": 1,
         "operation": "set",
-        "globalVariables": [],
+        "globalVariables": [
+            {
+                "textIp": "loading",
+                "typedIpValue": {
+                    "type": "str",
+                    "value": ""
+                }
+            }
+        ],
         "functionName": "sd_e69P7MchohGF0XIZ",
         "category": "Function",
         "x": 305,
-        "y": 80,
+        "y": 60,
         "wires": [
             [
                 "sd_gswLmarvHAWLarsW"
@@ -73,7 +81,7 @@
         "functionName": "fetchIsbnBook",
         "category": "General",
         "x": 105,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "sd_zzuWwWImxC4WIOvJ"
@@ -91,7 +99,6 @@
         "nodeType": "flow",
         "name": "fetch book details",
         "method": "get",
-        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.searchBookURL",
         "urlMappingObj": {
@@ -99,14 +106,11 @@
             "mapVarValue": "searchBookURL"
         },
         "ret": "json",
-        "retMapping": "",
         "retMappingObj": {},
         "observe": "",
-        "observeMapping": "",
         "observeMappingObj": {},
         "reportProgress": false,
         "withCreds": false,
-        "reqBody": "",
         "reqBodyObj": {
             "mapVarType": "this.page",
             "mapVarValue": ""
@@ -118,16 +122,14 @@
         },
         "headers": {},
         "headersObj": [],
-        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
-        "paramMapping": "",
         "paramMappingObj": {},
         "functionName": "fetchBookDetails",
         "category": "HTTP",
         "x": 345,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "sd_wLsvV4om1MkwJDV1"
@@ -145,11 +147,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "fetch-isbn-book-script2",
-        "script": "console.log('res===>>>',bh.input.response)\nconst bookData=bh.input.response.openApiLibraryData\n\nbh.local.bookData={\n    id: bookData.payload.isbn_10[0],\n    isbn: bookData.payload.isbn_13[0],\n    title: bookData.payload.title,\n    publishers: bookData.payload.publishers[0],\n    publishedYear:bookData.payload.publish_date,\n}\n\npage.hideButton=Boolean(true)\n",
+        "script": "console.log('res===>>>',bh.input.response)\nconst bookData=bh.input.response.openApiLibraryData\n\nconsole.log('identifer',bookData?.identifiers)\nif(!(bookData?.identifiers)){\n    throw new Error('ISBN not exists in OpenAPI Library')\n}\nbh.local.bookData={\n    id: bookData.identifiers.isbn_10,\n    isbn: page.pageData.isbn,\n    title: bookData.title,\n    publishers: bookData.authors[0].name,\n    publishedYear:bookData.publish_date,\n}\n\npage.hideButton=Boolean(true)\npage.loading=false",
         "functionName": "fetchIsbnBookScript2",
         "category": "Function",
         "x": 465,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "sd_EEsjOPzr4XnLP0in"
@@ -181,8 +183,8 @@
         ],
         "functionName": "fetchIsbnBookPagevariables",
         "category": "Function",
-        "x": 585,
-        "y": 420,
+        "x": 625,
+        "y": 340,
         "wires": [
             [
                 "sd_jdBgWol3WalKOY6V"
@@ -204,7 +206,7 @@
         "functionName": "sd_gswLmarvHAWLarsW",
         "category": "Function",
         "x": 505,
-        "y": 80,
+        "y": 60,
         "wires": [
             []
         ],
@@ -220,11 +222,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "fetch-isbn-book-script",
-        "script": "bh.local.searchBookURL=`http://localhost:8081/api/books/${page.pageData.isbn}`\n\n",
+        "script": "if (!(page.pageData.isbn) || (page.pageData.isbn).trim().length < 1) {\n    throw new Error('ISBN is empty')\n}\n\n\nbh.local.searchBookURL = `http://localhost:8081/api/books/${page.pageData.isbn}`\n\npage.loading = true",
         "functionName": "fetchIsbnBookScript",
         "category": "Function",
         "x": 225,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "sd_WwAzAMQcn4oGrky0"
@@ -249,7 +251,7 @@
         "functionName": "createBookUsingIsbn",
         "category": "General",
         "x": 105,
-        "y": 560,
+        "y": 500,
         "wires": [
             [
                 "sd_Jx53XvDfcHJVfwjd"
@@ -267,7 +269,6 @@
         "nodeType": "flow",
         "name": "create book http req",
         "method": "post",
-        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.createBookURL",
         "urlMappingObj": {
@@ -275,10 +276,8 @@
             "mapVarValue": "createBookURL"
         },
         "ret": "json",
-        "retMapping": "",
         "retMappingObj": {},
         "observe": "",
-        "observeMapping": "",
         "observeMappingObj": {},
         "reportProgress": false,
         "withCreds": false,
@@ -294,19 +293,17 @@
         },
         "headers": {},
         "headersObj": [],
-        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
-        "paramMapping": "",
         "paramMappingObj": {},
         "functionName": "createBookHttpReq",
         "category": "HTTP",
         "x": 365,
-        "y": 560,
+        "y": 500,
         "wires": [
             [
-                "sd_CT7d7NXpB1cFTGZt"
+                "sd_0MbCC6wbpgUrWZaV"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -321,11 +318,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "create-book-script",
-        "script": "bh.local.createBookURL=`http://localhost:8081/api/books/`\n\nbh.local.body={\n    isbn:page.pageData.isbn\n}",
+        "script": "bh.local.createBookURL=`http://localhost:8081/api/books/`\n\nbh.local.body={\n    isbn:page.pageData.isbn\n}\n\npage.loading=true",
         "functionName": "createBookScript",
         "category": "Function",
         "x": 245,
-        "y": 560,
+        "y": 500,
         "wires": [
             [
                 "sd_UtLo5RWtmMgQRxNq"
@@ -356,9 +353,7 @@
             "value": "3000"
         },
         "horizontalPosition": "center",
-        "horizontalPositionMap": "",
         "verticalPosition": "bottom",
-        "verticalPositionMap": "",
         "panelClass": {
             "type": "str",
             "value": ""
@@ -366,8 +361,8 @@
         "direction": "ltr",
         "functionName": "sd_jd0eBj9eXwgjnq8x",
         "category": "General",
-        "x": 605,
-        "y": 560,
+        "x": 705,
+        "y": 500,
         "wires": [
             [
                 "sd_i50xOCCtzAxcTlKi"
@@ -391,8 +386,8 @@
         "flow_type": "sync",
         "functionName": "clearBookDataViewCard",
         "category": "General",
-        "x": 105,
-        "y": 220,
+        "x": 107.00000381469727,
+        "y": 186.0000057220459,
         "wires": [
             [
                 "sd_2mnUOLQLNgjhud0l"
@@ -409,11 +404,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "page.hideButton=Boolean(false)\n\n\n",
+        "script": "page.hideButton=Boolean(false)\n\n",
         "functionName": "sd_2mnUOLQLNgjhud0l",
         "category": "Function",
-        "x": 230,
-        "y": 220,
+        "x": 259.00000381469727,
+        "y": 186.00000381469727,
         "wires": [
             []
         ],
@@ -448,8 +443,8 @@
         "outputs": 1,
         "functionName": "sd_jdBgWol3WalKOY6V",
         "category": "Function",
-        "x": 705,
-        "y": 420,
+        "x": 745,
+        "y": 340,
         "wires": [
             [
                 "sd_J83Ff4vsWS2kdPbM"
@@ -480,9 +475,7 @@
             "value": "3000"
         },
         "horizontalPosition": "center",
-        "horizontalPositionMap": "",
         "verticalPosition": "bottom",
-        "verticalPositionMap": "",
         "panelClass": {
             "type": "str",
             "value": ""
@@ -490,8 +483,8 @@
         "direction": "ltr",
         "functionName": "sd_J83Ff4vsWS2kdPbM",
         "category": "General",
-        "x": 825,
-        "y": 420,
+        "x": 864.0000114440918,
+        "y": 339.99999237060547,
         "wires": [
             []
         ],
@@ -507,11 +500,11 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "page.hideButton=Boolean(false)\n",
+        "script": "page.hideButton=Boolean(false)\npage.loading=false",
         "functionName": "sd_ueP4Wmb3p0VW4BhH",
         "category": "Function",
-        "x": 885,
-        "y": 320,
+        "x": 1265,
+        "y": 420,
         "wires": [
             []
         ],
@@ -526,7 +519,7 @@
         "z": "sd_n1vLhq6PDrgItzP2",
         "viewType": "common",
         "nodeType": "start",
-        "name": "",
+        "name": "search book catch node",
         "selectedNodes": [
             "sd_jbw0BYEQOHa7Pl1N",
             "sd_WwAzAMQcn4oGrky0",
@@ -537,13 +530,13 @@
         "selectCatchType": "selectednodes",
         "masternodeList": "",
         "ignoreList": "",
-        "functionName": "sd_tuPHUf4aHUpEQlkv",
+        "functionName": "searchBookCatchNode",
         "category": "General",
-        "x": 645,
-        "y": 320,
+        "x": 985,
+        "y": 360,
         "wires": [
             [
-                "sd_KFX0WszOfRZUvEIr"
+                "sd_kUxDcF3rxleuaLA3"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -558,8 +551,8 @@
         "nodeType": "flow",
         "name": "",
         "message": {
-            "type": "bh.input",
-            "value": "response.message"
+            "type": "bh.local",
+            "value": "errorMessage"
         },
         "action": {
             "type": "str",
@@ -570,9 +563,7 @@
             "value": "3000"
         },
         "horizontalPosition": "center",
-        "horizontalPositionMap": "",
         "verticalPosition": "bottom",
-        "verticalPositionMap": "",
         "panelClass": {
             "type": "str",
             "value": ""
@@ -580,8 +571,8 @@
         "direction": "ltr",
         "functionName": "sd_KFX0WszOfRZUvEIr",
         "category": "General",
-        "x": 765,
-        "y": 320,
+        "x": 1145,
+        "y": 360,
         "wires": [
             [
                 "sd_ueP4Wmb3p0VW4BhH"
@@ -618,8 +609,8 @@
         "outputs": 1,
         "functionName": "sd_CT7d7NXpB1cFTGZt",
         "category": "Function",
-        "x": 485,
-        "y": 560,
+        "x": 605,
+        "y": 500,
         "wires": [
             [
                 "sd_jd0eBj9eXwgjnq8x"
@@ -640,10 +631,142 @@
         "script": "page.hideButton=Boolean(false)\n",
         "functionName": "sd_i50xOCCtzAxcTlKi",
         "category": "Function",
-        "x": 725,
-        "y": 560,
+        "x": 805,
+        "y": 500,
         "wires": [
             []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "search_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_0MbCC6wbpgUrWZaV",
+        "type": "Script",
+        "z": "sd_n1vLhq6PDrgItzP2",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.loading=false",
+        "functionName": "sd_0MbCC6wbpgUrWZaV",
+        "category": "Function",
+        "x": 479.0000057220459,
+        "y": 500.82499504089355,
+        "wires": [
+            [
+                "sd_CT7d7NXpB1cFTGZt"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "search_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_K4CojB0ZotShymJ8",
+        "type": "Catch",
+        "z": "sd_n1vLhq6PDrgItzP2",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "creating book  catch node ",
+        "selectedNodes": [
+            "sd_UtLo5RWtmMgQRxNq"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "creatingBookCatchNode",
+        "category": "General",
+        "x": 985,
+        "y": 480,
+        "wires": [
+            [
+                "sd_KlUHqsoIrgkfiGZT"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "search_bookComponent"
+    },
+    {
+        "id": "sd_WQDbtuUYYfUnackd",
+        "type": "SnackBar",
+        "z": "sd_n1vLhq6PDrgItzP2",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "message": {
+            "type": "bh.local",
+            "value": "errorMessage"
+        },
+        "action": {
+            "type": "str",
+            "value": "Close"
+        },
+        "duration": {
+            "type": "num",
+            "value": "3000"
+        },
+        "horizontalPosition": "center",
+        "verticalPosition": "bottom",
+        "panelClass": {
+            "type": "str",
+            "value": ""
+        },
+        "direction": "ltr",
+        "functionName": "sd_WQDbtuUYYfUnackd",
+        "category": "General",
+        "x": 1145,
+        "y": 480,
+        "wires": [
+            [
+                "sd_ueP4Wmb3p0VW4BhH"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "search_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_kUxDcF3rxleuaLA3",
+        "type": "Script",
+        "z": "sd_n1vLhq6PDrgItzP2",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.errorMessage=bh.error.message || \"Failed to fetch book details\"",
+        "functionName": "sd_kUxDcF3rxleuaLA3",
+        "category": "Function",
+        "x": 1065,
+        "y": 360,
+        "wires": [
+            [
+                "sd_KFX0WszOfRZUvEIr"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "search_bookComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_KlUHqsoIrgkfiGZT",
+        "type": "Script",
+        "z": "sd_n1vLhq6PDrgItzP2",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.errorMessage=\"Failed to add book \"",
+        "functionName": "sd_KlUHqsoIrgkfiGZT",
+        "category": "Function",
+        "x": 1065,
+        "y": 480,
+        "wires": [
+            [
+                "sd_WQDbtuUYYfUnackd"
+            ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,

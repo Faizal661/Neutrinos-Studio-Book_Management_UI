@@ -1,4 +1,35 @@
 {
+    "44a55816-145c-2da8-2f0a-52b47ee4ec8b": {
+        "paletteKey": "NEUTRINOS_VIEW_loading_animation",
+        "commentid": null,
+        "designerReference": [
+            {
+                "_key": "componentLabel",
+                "_value": "loading_animation",
+                "_type": "kv",
+                "_attrDef": "p",
+                "_useAsLabel": true
+            },
+            {
+                "_key": "style",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "class",
+                "_value": "",
+                "_type": "dav",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "*ngIf",
+                "_value": "page.loading",
+                "_type": "kv",
+                "_attrDef": "c"
+            }
+        ]
+    },
     "f08c0ad3-f50d-43f5-a25e-1a6674751101": {
         "paletteKey": "NG-Header",
         "commentid": null,
@@ -232,7 +263,7 @@
                     },
                     {
                         "_key": "html",
-                        "_value": "Book Management",
+                        "_value": "\tBook Management >\r\n\t<span *ngIf=\"page.currentPath === 'home'\">Home</span>\r\n\t<span *ngIf=\"page.currentPath === 'audits'\">Audit</span>",
                         "_type": "a",
                         "_attrDef": "p"
                     }
